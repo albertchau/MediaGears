@@ -1,3 +1,20 @@
+'use strict';
 /**
- * Created by achau1 on 4/22/14.
+ * Created by achau1 on 4/23/14.
  */
+
+myAppControllers.controller('WelcomeCtrl', ['$scope', function($scope) {
+    $scope.myInterval = -1;
+    var slides = $scope.slides = [];
+    $scope.addSlide = function() {
+        var newWidth = 600 + slides.length;
+        slides.push({
+            image: 'http://placekitten.com/' + newWidth + '/300',
+            text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+                ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+        });
+    };
+    for (var i=0; i<4; i++) {
+        $scope.addSlide();
+    }
+}]);
